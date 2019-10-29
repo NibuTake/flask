@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <!--
+    <script type=text/javascript src="{{ url_for('static', filename='js/jquery-3.4.1.js') }}"></script>
+     -->
+    <script type=text/javascript>
+      $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+  </head>
+
+  <body>
+    <h1>Generate Graph Interactively Example</h1>
+
+    <!-- Form -->
+    <p> Mean = <input type=text size=5 name=mean>
+        Var = <input type=text size=5 name=var>
+    <p><a href=# id=visualize>Visualize</a>
+
+    <!-- Graph -->
+    {% for id in ids %}
+    <h3>{{id}}</h3>
+    <div id="{{id}}"></div>
+    {% endfor %}
+
+  </body>
+
+  <footer>
+      <!-- D3.js -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+      <!-- jQuery -->
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <!-- Plotly.js -->
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+      <!-- Calculation -->
+      <script type=text/javascript src="{{ url_for('static', filename='js/visualize.js') }}"></script>
+  </footer>
+
+</html>
